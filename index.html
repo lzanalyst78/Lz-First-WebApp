@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Syukur Quest</title>
+  <meta name="description" content="App santai untuk tulis rasa syukur dan ucap terima kasih, kumpul XP, lencana dan streak.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">🌱</span>
+      <div>
+        <h1>Syukur Quest</h1>
+        <p class="tagline">Tulis rasa syukur. Ucap terima kasih. Naik level.</p>
+      </div>
+    </div>
+    <div class="level-card" aria-live="polite">
+      <div class="level-row">
+        <span id="levelName" class="level-name">Benih</span>
+        <span class="level-num">Lvl <b id="levelNum">1</b></span>
+      </div>
+      <div class="xpbar"><div id="xpFill" class="xpfill"></div></div>
+      <div class="xp-text"><span id="xpText">0 / 50 XP</span><span>🔥 <b id="streak">0</b> hari</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card composer">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-type="journal" role="tab" aria-selected="true">🙏 Saya bersyukur…</button>
+        <button class="tab" data-type="thanks" role="tab" aria-selected="false">💌 Terima kasih kepada…</button>
+      </div>
+
+      <form id="entryForm">
+        <label id="toWrap" class="to-wrap hidden">
+          <span>Untuk siapa?</span>
+          <input id="toInput" type="text" maxlength="60" placeholder="cth: Mak, Cikgu Aina, rakan sekerja">
+        </label>
+        <textarea id="textInput" rows="4" maxlength="1000" required
+          placeholder="Hari ni saya bersyukur sebab…"></textarea>
+        <div class="chips" id="categoryChips"></div>
+        <div class="form-foot">
+          <span class="hint" id="hint">Tip: tulis lebih detail (50+ huruf) untuk bonus XP ✨</span>
+          <button type="submit" class="btn-primary">Simpan +XP</button>
+        </div>
+      </form>
+      <button id="promptBtn" class="link-btn" type="button">🎲 Tak tahu nak tulis apa? Bagi idea</button>
+    </section>
+
+    <section class="card">
+      <h2>Stat Minda & Badan</h2>
+      <p class="sub">Stat permainan yang naik setiap kali awak bersyukur, berdasarkan bidang yang dikaji oleh penyelidik. Ini bukan ukuran perubatan.</p>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <section class="card">
+      <h2>Lencana</h2>
+      <div class="badges" id="badges"></div>
+    </section>
+
+    <section class="card">
+      <div class="log-head">
+        <h2>Jurnal Syukur</h2>
+        <span class="sub" id="countText">0 catatan</span>
+      </div>
+      <div class="week" id="week"></div>
+      <ul class="log" id="log"></ul>
+      <p class="empty" id="empty">Belum ada catatan lagi. Mulakan dengan satu benda kecil pun dah cukup 🌤️</p>
+    </section>
+
+    <section class="card science">
+      <h2>Kenapa bersyukur? Apa kata sains</h2>
+      <div id="scienceList" class="science-list"></div>
+      <p class="disclaimer">Nota jujur: kajian menunjukkan kesan latihan syukur biasanya <b>kecil hingga sederhana</b> dan berbeza bagi setiap orang. App ini untuk keseronokan dan tabiat baik, bukan pengganti nasihat doktor atau kaunselor.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Data disimpan dalam browser awak sahaja.</span>
+    <button id="resetBtn" class="link-btn danger" type="button">Padam semua data</button>
+  </footer>
+
+  <div id="toast" class="toast hidden" role="dialog" aria-live="assertive">
+    <div class="toast-xp" id="toastXp">+15 XP</div>
+    <div class="toast-stats" id="toastStats"></div>
+    <div class="toast-fact">
+      <div class="fact-label">🔬 Fakta sains</div>
+      <p id="toastFact"></p>
+      <cite id="toastCite"></cite>
+    </div>
+    <button id="toastClose" class="btn-primary" type="button">Best! 🙌</button>
+  </div>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
